@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kapersburg Apotheke</title>
+  <meta name="description" content="Kapersburg-Apotheke – Ihre Gesundheitsberater in Friedrichsdorf-Köppern: persönliche Beratung, Rezeptservice, individuelle Rezepturen und mehr." />
+  <meta property="og:title" content="Kapersburg-Apotheke – Ihre Gesundheitsberater vor Ort" />
+  <meta property="og:description" content="Seit 1981 für Sie da: Beratung, klassische & naturheilkundliche Arzneimittel, Lieferservice, Messungen und individuelle Rezepturen." />
+  <meta property="og:image" content="og_media/home_img_001.jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="de_DE" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" type="image/jpeg" href="og_media/logo_kaper.jpg" />
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Tailwind custom config for brand colors
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              red: '#B00020', // Apotheke Rot (accessible-darker)
+              green: '#2E7D32', // angenehmes Grün
+              light: '#F7FAFC' // zartes Hintergrundweiß
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    html { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif; }
+  </style>
+</head>
+<body class="bg-white text-slate-900">
+  <!-- Header -->
+  <header class="sticky top-0 z-30 bg-white/90 backdrop-blur border-b border-slate-200">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="flex items-center justify-between h-16">
+        <a href="#home" class="flex items-center" aria-label="Zur Startseite">
+          <img src="og_media/logo_kaper.jpg" alt="Logo Kapersburg-Apotheke" class="w-10 h-10 rounded-md object-cover" />
+        </a>
+        <nav class="hidden sm:flex items-center gap-6 text-sm">
+          <a href="#leistungen" class="hover:text-brand-red">Leistungen</a>
+          <a href="#ueber-uns" class="hover:text-brand-red">Über uns</a>
+          <a href="#oeffnungszeiten" class="hover:text-brand-red">Öffnungszeiten</a>
+          <a href="#kontakt" class="hover:text-brand-red">Kontakt</a>
+          <a href="#notdienst" class="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-brand-red text-white hover:bg-red-700">Notdienst</a>
+        </nav>
+        <!-- Mobile CTA -->
+        <div class="sm:hidden">
+          <a href="tel:+496175636" class="inline-flex items-center px-3 py-2 rounded-md bg-brand-green text-white font-semibold">Anrufen</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="home">
+    <!-- Hero -->
+    <section class="relative">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+        <div class="grid sm:grid-cols-2 gap-6 sm:gap-10 items-center">
+          <div>
+            <h1 class="text-2xl sm:text-4xl font-semibold leading-tight">Ihre Apotheke in Friedrichsdorf-Köppern</h1>
+            <p class="mt-3 sm:mt-4 text-slate-700">Seit 1981 steht die Kapersburg-Apotheke für persönliche, diskrete und kompetente Beratung. Wir begleiten Sie bei Arzneimittelfragen, Vorsorge und gesundheitlichen Entscheidungen – mit Erfahrung, Herz und Zeit für Ihr Anliegen.</p>
+            <div class="mt-6 flex flex-wrap gap-3">
+              <a href="tel:+496175636" class="inline-flex items-center gap-2 px-4 py-3 rounded-lg bg-brand-green text-white font-semibold hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-brand-green focus:ring-offset-2">
+                <span>Anrufen</span>
+              </a>
+              <a href="#rezept" class="inline-flex items-center gap-2 px-4 py-3 rounded-lg border border-slate-300 text-slate-900 font-semibold hover:border-brand-red hover:text-brand-red focus:outline-none focus:ring-2 focus:ring-brand-red focus:ring-offset-2">
+                Rezept vorbestellen
+              </a>
+            </div>
+            <div class="mt-6 text-sm text-slate-600">Persönliche Gesundheitsberatung · Individuelle Rezepturen · Lieferservice</div>
+          </div>
+          <div class="order-first sm:order-last">
+            <!-- Lokales Bild aus Assets -->
+            <img src="og_media/home_img_001.jpg" alt="Innenaufnahme der Kapersburg-Apotheke in Friedrichsdorf-Köppern" class="w-full h-56 sm:h-80 object-cover rounded-xl shadow-sm" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Wichtige Infos -->
+    <section id="wichtige-infos" class="bg-brand-light">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+        <h2 class="text-xl sm:text-2xl font-semibold">Wichtige Informationen</h2>
+        <div class="mt-6 grid sm:grid-cols-3 gap-6">
+          <!-- Öffnungszeiten -->
+          <div id="oeffnungszeiten" class="rounded-xl border border-slate-200 bg-white p-5">
+            <h3 class="text-lg font-semibold">Öffnungszeiten</h3>
+            <ul class="mt-3 space-y-1 text-slate-700">
+              <li>Mo–Fr: 08:30–13:00 & 14:30–18:30</li>
+              <li>Sa: 08:30–13:00</li>
+              <li>Mi Nachmittag geschlossen</li>
+            </ul>
+          </div>
+          <!-- Adresse & Kontakt -->
+          <div id="kontakt" class="rounded-xl border border-slate-200 bg-white p-5">
+            <h3 class="text-lg font-semibold">Adresse & Kontakt</h3>
+            <p class="mt-3 text-slate-700">Kapersburg-Apotheke<br/>Köpperner Str. 87<br/>61381 Friedrichsdorf-Köppern</p>
+            <div class="mt-4 flex flex-col sm:flex-row gap-3">
+              <a href="tel:+496175636" class="inline-flex items-center justify-center px-4 py-2 rounded-md bg-brand-green text-white font-medium hover:bg-green-700">Tel.: (06175) 636</a>
+              <a href="mailto:info@kapersburg-apotheke.de" class="inline-flex items-center justify-center px-4 py-2 rounded-md border border-slate-300 text-slate-900 font-medium hover:border-brand-red hover:text-brand-red">E-Mail schreiben</a>
+            </div>
+          </div>
+          <!-- Notdienst -->
+          <div id="notdienst" class="rounded-xl border border-slate-200 bg-white p-5">
+            <h3 class="text-lg font-semibold">Notdienst</h3>
+            <p class="mt-3 text-slate-700">Außerhalb der Öffnungszeiten finden Sie den Apotheken-Notdienst hier:</p>
+            <a href="https://www.aponet.de/apotheke/notdienstsuche" target="_blank" rel="noopener" class="mt-4 inline-flex items-center justify-center w-full px-4 py-3 rounded-lg bg-brand-red text-white font-semibold hover:bg-red-700">Zum Notdienst-Portal</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Über uns / Historie -->
+    <section id="ueber-uns" class="bg-brand-light">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+        <h2 class="text-xl sm:text-2xl font-semibold">Über uns</h2>
+        <div class="mt-4 space-y-4 text-slate-700 leading-relaxed">
+          <p>1981 bezog Herr Apotheker Franz Grossmann die heutigen Räume in seinem neu erbauten Wohn- und Geschäftshaus in der Köpperner Straße 87 und benannte die zuvor geführte „Neue Taunus-Apotheke" in „Kapersburg-Apotheke" um – angelehnt an das nahegelegene römische Kastell.</p>
+          <p>Seit dem 1. Juli 2014 führt Frau Apothekerin Cornelia Braun die Kapersburg-Apotheke weiter. Unsere Rolle hat sich längst gewandelt: Wir sind nicht nur Abgabestelle für Arzneimittel, sondern verlässliche Gesundheitsberater. Wir nehmen uns Zeit für Ihre individuellen Fragen und unterstützen Sie nach ärztlicher Diagnose genauso wie bei der Vorsorge.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Leistungen -->
+    <section id="leistungen">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+        <h2 class="text-xl sm:text-2xl font-semibold">Unsere Leistungen</h2>
+        <div class="mt-6 grid sm:grid-cols-3 gap-6">
+          <div class="rounded-xl border border-slate-200 p-5">
+            <h3 class="font-semibold">Beratung & Prävention</h3>
+            <ul class="mt-2 space-y-1 text-slate-700 text-sm">
+              <li>Individuelle Arzneimittelberatung</li>
+              <li>(Reise-)Impfberatung</li>
+              <li>Diabetes-, Allergiker- & Asthmabetreuung</li>
+              <li>Ernährungsberatung</li>
+              <li>Diskrete Inkontinenzberatung</li>
+            </ul>
+          </div>
+          <div class="rounded-xl border border-slate-200 p-5">
+            <h3 class="font-semibold">Arzneimittel & Sortimentsbreite</h3>
+            <ul class="mt-2 space-y-1 text-slate-700 text-sm">
+              <li>Klassische verschriebene Arzneimittel</li>
+              <li>Homöopathie & Naturheilkunde</li>
+              <li>Allopathische Präparate</li>
+              <li>Kosmetik & Wohlbefinden</li>
+            </ul>
+          </div>
+          <div class="rounded-xl border border-slate-200 p-5">
+            <h3 class="font-semibold">Service & Komfort</h3>
+            <ul class="mt-2 space-y-1 text-slate-700 text-sm">
+              <li>Kostenloser Lieferservice</li>
+              <li>Online-Vorbestellung</li>
+              <li>Haus- & Reiseapotheke Check</li>
+              <li>Messung von Blutdruck & Blutzucker</li>
+              <li>Individuelle Rezepturen</li>
+              <li>Verleih med.-technischer Geräte</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Rezept vorbestellen (Platzhalterformular) -->
+    <section id="rezept" class="bg-brand-light">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+        <h2 class="text-xl sm:text-2xl font-semibold">Rezept vorbestellen</h2>
+        <form class="mt-4 grid sm:grid-cols-2 gap-4">
+          <input type="text" placeholder="Ihr Name" class="w-full rounded-md border border-slate-300 px-3 py-2" />
+          <input type="tel" placeholder="Telefonnummer" class="w-full rounded-md border border-slate-300 px-3 py-2" />
+          <textarea placeholder="Medikament(e) / Rezeptdetails" class="sm:col-span-2 w-full rounded-md border border-slate-300 px-3 py-2 h-28"></textarea>
+          <button type="button" class="sm:col-span-2 inline-flex items-center justify-center px-4 py-3 rounded-lg bg-brand-green text-white font-semibold hover:bg-green-700">Unverbindlich anfragen</button>
+          <p class="sm:col-span-2 text-xs text-slate-600">Hinweis: Dieses Formular dient als Platzhalter. Für einen echten Service nutzen Sie bitte Telefon oder E-Mail.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-200 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div class="text-sm text-slate-600">Inhaberin: Cornelia Braun</div>
+        <div class="flex items-center gap-4 text-sm">
+          <a href="#impressum" class="hover:text-brand-red">Impressum</a>
+          <a href="#datenschutz" class="hover:text-brand-red">Datenschutz</a>
+        </div>
+      </div>
+      <!-- Simple modal-esque sections for Impressum/Datenschutz placeholders -->
+      <div id="impressum" class="mt-6 rounded-xl border border-slate-200 p-5">
+        <h3 class="font-semibold">Impressum (Platzhalter)</h3>
+        <p class="mt-2 text-slate-700">Kapersburg-Apotheke · Köpperner Str. 87 · 61381 Friedrichsdorf · Verantwortlich: Apothekerin Cornelia Braun · Tel.: (06175) 636 · info@kapersburg-apotheke.de</p>
+      </div>
+      <div id="datenschutz" class="mt-6 rounded-xl border border-slate-200 p-5">
+        <h3 class="font-semibold">Datenschutz (Platzhalter)</h3>
+        <p class="mt-2 text-slate-700">Informationen zum Umgang mit personenbezogenen Daten folgen hier.</p>
+      </div>
+      <div class="mt-6 text-xs text-slate-500">© <span id="year"></span> Kapersburg Apotheke</div>
+    </div>
+  </footer>
+
+  <script>
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

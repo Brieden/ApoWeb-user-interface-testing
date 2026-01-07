@@ -300,7 +300,7 @@
           </div>
           <div>
             <label for="phone" class="block text-sm font-medium text-slate-700 mb-1">Telefonnummer *</label>
-            <input type="tel" id="phone" name="phone" required pattern="[0-9\s\+\-\(\)]{6,}" placeholder="+49 6175 636" class="w-full rounded-md border border-slate-300 px-3 py-2 focus:border-brand-green focus:ring-1 focus:ring-brand-green transition-colors" />
+            <input type="tel" id="phone" name="phone" required pattern="^[\+]?[0-9\s\(\)\-]{7,20}$" placeholder="+49 6175 636" class="w-full rounded-md border border-slate-300 px-3 py-2 focus:border-brand-green focus:ring-1 focus:ring-brand-green transition-colors" />
           </div>
           <div class="sm:col-span-2">
             <label for="medication" class="block text-sm font-medium text-slate-700 mb-1">Medikament(e) / Rezeptdetails *</label>
@@ -425,6 +425,9 @@
     // Set current year
     document.getElementById('year').textContent = new Date().getFullYear();
     
+    // Constants
+    const MESSAGE_TIMEOUT = 10000; // 10 seconds
+    
     // Mobile menu toggle
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -471,9 +474,9 @@
           return;
         }
         
-        // Phone validation
-        const phonePattern = /[0-9\s\+\-\(\)]{6,}/;
-        if (!phonePattern.test(phone)) {
+        // Phone validation - must contain at least one digit and match pattern
+        const phonePattern = /^[\+]?[0-9\s\(\)\-]{7,20}$/;
+        if (!phonePattern.test(phone) || !/\d/.test(phone)) {
           showFormMessage('Bitte geben Sie eine gültige Telefonnummer ein.', 'error');
           return;
         }
@@ -501,10 +504,10 @@
       // Scroll to message
       formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       
-      // Hide after 10 seconds
+      // Hide after timeout
       setTimeout(() => {
         formMessage.classList.add('hidden');
-      }, 10000);
+      }, MESSAGE_TIMEOUT);
     }
   </script>
 </body>

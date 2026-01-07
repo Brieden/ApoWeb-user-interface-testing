@@ -33,11 +33,116 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Structured Data for Local Business (Schema.org) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Pharmacy",
+    "name": "Kapersburg-Apotheke",
+    "image": "assets/hero.jpg",
+    "description": "Seit 1981 für Sie da: Beratung, klassische & naturheilkundliche Arzneimittel, Lieferservice, Messungen und individuelle Rezepturen.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Köpperner Str. 87",
+      "addressLocality": "Friedrichsdorf",
+      "addressRegion": "Hessen",
+      "postalCode": "61381",
+      "addressCountry": "DE"
+    },
+    "telephone": "+4961756175636",
+    "email": "kapersburg-apotheke@web.de",
+    "url": "https://www.kapersburg-apotheke.de",
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "08:00",
+        "closes": "18:30"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "08:00",
+        "closes": "13:00"
+      }
+    ],
+    "priceRange": "$$",
+    "founder": {
+      "@type": "Person",
+      "name": "Franz Grossmann"
+    },
+    "employee": {
+      "@type": "Person",
+      "name": "Cornelia Braun",
+      "jobTitle": "Apothekerin"
+    }
+  }
+  </script>
+  
   <style>
-    html { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif; }
+    html { 
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+      scroll-behavior: smooth;
+    }
+    
+    /* Mobile menu styles */
+    .mobile-menu {
+      display: none;
+    }
+    .mobile-menu.active {
+      display: block;
+    }
+    
+    /* Hamburger menu animation */
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background-color: #1e293b;
+      margin: 5px 0;
+      transition: 0.3s;
+    }
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(45deg) translate(-5px, -6px);
+    }
+    
+    /* Skip link for accessibility */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: #B00020;
+      color: white;
+      padding: 8px;
+      text-decoration: none;
+      z-index: 100;
+    }
+    .skip-link:focus {
+      top: 0;
+    }
+    
+    /* Form validation styles */
+    input:invalid:not(:placeholder-shown),
+    textarea:invalid:not(:placeholder-shown) {
+      border-color: #dc2626;
+    }
+    input:valid:not(:placeholder-shown),
+    textarea:valid:not(:placeholder-shown) {
+      border-color: #2E7D32;
+    }
   </style>
 </head>
 <body class="bg-white text-slate-900">
+  <!-- Skip to main content link for accessibility -->
+  <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
+  
   <!-- Header -->
   <header class="sticky top-0 z-30 bg-white/90 backdrop-blur border-b border-slate-200">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
@@ -45,22 +150,37 @@
         <a href="#home" class="flex items-center" aria-label="Zur Startseite">
           <img src="assets/logo.jpg" alt="Logo Kapersburg-Apotheke" class="h-14 sm:h-16 w-auto object-contain" />
         </a>
-        <nav class="hidden sm:flex items-center gap-6 text-sm">
-          <a href="#leistungen" class="hover:text-brand-red">Leistungen</a>
-          <a href="#ueber-uns" class="hover:text-brand-red">Über uns</a>
-          <a href="#oeffnungszeiten" class="hover:text-brand-red">Öffnungszeiten</a>
-          <a href="#kontakt" class="hover:text-brand-red">Kontakt</a>
-          <a href="#notdienst" class="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-brand-red text-white hover:bg-red-700">Notdienst</a>
+        <nav class="hidden sm:flex items-center gap-6 text-sm" aria-label="Hauptnavigation">
+          <a href="#leistungen" class="hover:text-brand-red transition-colors">Leistungen</a>
+          <a href="#ueber-uns" class="hover:text-brand-red transition-colors">Über uns</a>
+          <a href="#oeffnungszeiten" class="hover:text-brand-red transition-colors">Öffnungszeiten</a>
+          <a href="#kontakt" class="hover:text-brand-red transition-colors">Kontakt</a>
+          <a href="#notdienst" class="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-brand-red text-white hover:bg-red-700 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-red focus:ring-offset-2">Notdienst</a>
         </nav>
-        <!-- Mobile CTA -->
-        <div class="sm:hidden">
-          <a href="tel:+4961756175636" class="inline-flex items-center px-3 py-2 rounded-md bg-brand-green text-white font-semibold">Anrufen</a>
+        <!-- Mobile menu button -->
+        <div class="sm:hidden flex items-center gap-2">
+          <a href="tel:+4961756175636" class="inline-flex items-center px-3 py-2 rounded-md bg-brand-green text-white font-semibold hover:bg-green-700 transition-colors" aria-label="Apotheke anrufen">Anrufen</a>
+          <button id="mobile-menu-btn" class="hamburger p-2" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
         </div>
       </div>
+      <!-- Mobile Navigation Menu -->
+      <nav id="mobile-menu" class="mobile-menu sm:hidden pb-4" aria-label="Mobile Navigation">
+        <div class="flex flex-col gap-2">
+          <a href="#leistungen" class="block px-4 py-2 hover:bg-gray-100 rounded-md transition-colors">Leistungen</a>
+          <a href="#ueber-uns" class="block px-4 py-2 hover:bg-gray-100 rounded-md transition-colors">Über uns</a>
+          <a href="#oeffnungszeiten" class="block px-4 py-2 hover:bg-gray-100 rounded-md transition-colors">Öffnungszeiten</a>
+          <a href="#kontakt" class="block px-4 py-2 hover:bg-gray-100 rounded-md transition-colors">Kontakt</a>
+          <a href="#notdienst" class="block px-4 py-2 bg-brand-red text-white rounded-md hover:bg-red-700 transition-colors text-center">Notdienst</a>
+        </div>
+      </nav>
     </div>
   </header>
 
-  <main id="home">
+  <main id="main-content">
     <!-- Hero -->
     <section class="relative">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
@@ -69,10 +189,10 @@
             <h1 class="text-2xl sm:text-4xl font-semibold leading-tight">Ihre Apotheke in Friedrichsdorf-Köppern</h1>
             <p class="mt-3 sm:mt-4 text-slate-700">Seit 1981 steht die Kapersburg-Apotheke für persönliche, diskrete und kompetente Beratung. Wir begleiten Sie bei Arzneimittelfragen, Vorsorge und gesundheitlichen Entscheidungen – mit Erfahrung, Herz und Zeit für Ihr Anliegen.</p>
             <div class="mt-6 flex flex-wrap gap-3">
-              <a href="tel:+4961756175636" class="inline-flex items-center gap-2 px-4 py-3 rounded-lg bg-brand-green text-white font-semibold hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-brand-green focus:ring-offset-2">
+              <a href="tel:+4961756175636" class="inline-flex items-center gap-2 px-4 py-3 rounded-lg bg-brand-green text-white font-semibold hover:bg-green-700 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-green focus:ring-offset-2" aria-label="Apotheke anrufen">
                 <span>Anrufen</span>
               </a>
-              <a href="#rezept" class="inline-flex items-center gap-2 px-4 py-3 rounded-lg border border-slate-300 text-slate-900 font-semibold hover:border-brand-red hover:text-brand-red focus:outline-none focus:ring-2 focus:ring-brand-red focus:ring-offset-2">
+              <a href="#rezept" class="inline-flex items-center gap-2 px-4 py-3 rounded-lg border border-slate-300 text-slate-900 font-semibold hover:border-brand-red hover:text-brand-red transition-colors focus:outline-none focus:ring-2 focus:ring-brand-red focus:ring-offset-2">
                 Rezept vorbestellen
               </a>
             </div>
@@ -80,7 +200,7 @@
           </div>
           <div class="order-first sm:order-last">
             <!-- Lokales Bild aus Assets -->
-            <img src="assets/hero.jpg" alt="Innenaufnahme der Kapersburg-Apotheke in Friedrichsdorf-Köppern" class="w-full h-56 sm:h-80 object-cover rounded-xl shadow-sm" />
+            <img src="assets/hero.jpg" alt="Innenaufnahme der Kapersburg-Apotheke in Friedrichsdorf-Köppern" class="w-full h-56 sm:h-80 object-cover rounded-xl shadow-sm" loading="eager" />
           </div>
         </div>
       </div>
@@ -105,15 +225,15 @@
             <h3 class="text-lg font-semibold">Adresse & Kontakt</h3>
             <p class="mt-3 text-slate-700">Kapersburg-Apotheke<br/>Köpperner Str. 87<br/>61381 Friedrichsdorf-Köppern</p>
             <div class="mt-4 flex flex-col sm:flex-row gap-3">
-              <a href="tel:+4961756175636" class="inline-flex items-center justify-center px-4 py-2 rounded-md bg-brand-green text-white font-medium hover:bg-green-700">Tel.: (06175) 636</a>
-              <a href="mailto:kapersburg-apotheke@web.de" class="inline-flex items-center justify-center px-4 py-2 rounded-md border border-slate-300 text-slate-900 font-medium hover:border-brand-red hover:text-brand-red">E-Mail schreiben</a>
+              <a href="tel:+4961756175636" class="inline-flex items-center justify-center px-4 py-2 rounded-md bg-brand-green text-white font-medium hover:bg-green-700 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-green focus:ring-offset-2" aria-label="Apotheke anrufen">Tel.: (06175) 636</a>
+              <a href="mailto:kapersburg-apotheke@web.de" class="inline-flex items-center justify-center px-4 py-2 rounded-md border border-slate-300 text-slate-900 font-medium hover:border-brand-red hover:text-brand-red transition-colors focus:outline-none focus:ring-2 focus:ring-brand-red focus:ring-offset-2" aria-label="E-Mail an Apotheke senden">E-Mail schreiben</a>
             </div>
           </div>
           <!-- Notdienst -->
           <div id="notdienst" class="rounded-xl border border-slate-200 bg-white p-5">
             <h3 class="text-lg font-semibold">Notdienst</h3>
             <p class="mt-3 text-slate-700">Außerhalb der Öffnungszeiten finden Sie den Apotheken-Notdienst hier:</p>
-            <a href="https://www.aponet.de/apotheke/notdienstsuche" target="_blank" rel="noopener" class="mt-4 inline-flex items-center justify-center w-full px-4 py-3 rounded-lg bg-brand-red text-white font-semibold hover:bg-red-700">Zum Notdienst-Portal</a>
+            <a href="https://www.aponet.de/apotheke/notdienstsuche" target="_blank" rel="noopener" class="mt-4 inline-flex items-center justify-center w-full px-4 py-3 rounded-lg bg-brand-red text-white font-semibold hover:bg-red-700 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-red focus:ring-offset-2" aria-label="Apotheken-Notdienst Portal öffnen">Zum Notdienst-Portal</a>
           </div>
         </div>
       </div>
@@ -173,12 +293,22 @@
     <section id="rezept" class="bg-brand-light">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
         <h2 class="text-xl sm:text-2xl font-semibold">Rezept vorbestellen</h2>
-        <form class="mt-4 grid sm:grid-cols-2 gap-4">
-          <input type="text" placeholder="Ihr Name" class="w-full rounded-md border border-slate-300 px-3 py-2" />
-          <input type="tel" placeholder="Telefonnummer" class="w-full rounded-md border border-slate-300 px-3 py-2" />
-          <textarea placeholder="Medikament(e) / Rezeptdetails" class="sm:col-span-2 w-full rounded-md border border-slate-300 px-3 py-2 h-28"></textarea>
-          <button type="button" class="sm:col-span-2 inline-flex items-center justify-center px-4 py-3 rounded-lg bg-brand-green text-white font-semibold hover:bg-green-700">Unverbindlich anfragen</button>
-          <p class="sm:col-span-2 text-xs text-slate-600">Hinweis: Dieses Formular dient als Platzhalter. Für einen echten Service nutzen Sie bitte Telefon oder E-Mail.</p>
+        <form id="prescription-form" class="mt-4 grid sm:grid-cols-2 gap-4" novalidate>
+          <div>
+            <label for="name" class="block text-sm font-medium text-slate-700 mb-1">Ihr Name *</label>
+            <input type="text" id="name" name="name" required placeholder="Max Mustermann" class="w-full rounded-md border border-slate-300 px-3 py-2 focus:border-brand-green focus:ring-1 focus:ring-brand-green transition-colors" />
+          </div>
+          <div>
+            <label for="phone" class="block text-sm font-medium text-slate-700 mb-1">Telefonnummer *</label>
+            <input type="tel" id="phone" name="phone" required pattern="^[\+]?[0-9\s\(\)\-]{7,20}$" placeholder="+49 6175 636" class="w-full rounded-md border border-slate-300 px-3 py-2 focus:border-brand-green focus:ring-1 focus:ring-brand-green transition-colors" />
+          </div>
+          <div class="sm:col-span-2">
+            <label for="medication" class="block text-sm font-medium text-slate-700 mb-1">Medikament(e) / Rezeptdetails *</label>
+            <textarea id="medication" name="medication" required placeholder="Bitte beschreiben Sie, welche Medikamente Sie benötigen..." class="w-full rounded-md border border-slate-300 px-3 py-2 h-28 focus:border-brand-green focus:ring-1 focus:ring-brand-green transition-colors"></textarea>
+          </div>
+          <button type="submit" class="sm:col-span-2 inline-flex items-center justify-center px-4 py-3 rounded-lg bg-brand-green text-white font-semibold hover:bg-green-700 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-green focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed">Unverbindlich anfragen</button>
+          <p class="sm:col-span-2 text-xs text-slate-600">* Pflichtfelder. Hinweis: Dieses Formular dient als Platzhalter. Für einen echten Service nutzen Sie bitte Telefon oder E-Mail.</p>
+          <div id="form-message" class="sm:col-span-2 hidden p-3 rounded-md" role="alert"></div>
         </form>
       </div>
     </section>
@@ -262,8 +392,30 @@
         </div>
       </div>
       <div id="datenschutz" class="mt-6 rounded-xl border border-slate-200 p-5">
-        <h3 class="font-semibold">Datenschutz (Platzhalter)</h3>
-        <p class="mt-2 text-slate-700">Informationen zum Umgang mit personenbezogenen Daten folgen hier.</p>
+        <h3 class="font-semibold text-lg mb-4">Datenschutzerklärung</h3>
+        <div class="space-y-4 text-slate-700 text-sm">
+          <div>
+            <strong>1. Datenschutz auf einen Blick</strong>
+            <p class="mt-2">Allgemeine Hinweise: Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie unsere Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.</p>
+          </div>
+          <div>
+            <strong>2. Datenerfassung auf unserer Website</strong>
+            <p class="mt-2"><strong>Wer ist verantwortlich für die Datenerfassung auf dieser Website?</strong><br/>
+            Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem Impressum dieser Website entnehmen.</p>
+          </div>
+          <div>
+            <strong>3. Ihre Rechte</strong>
+            <p class="mt-2">Sie haben jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten. Sie haben außerdem ein Recht, die Berichtigung oder Löschung dieser Daten zu verlangen. Wenn Sie eine Einwilligung zur Datenverarbeitung erteilt haben, können Sie diese Einwilligung jederzeit für die Zukunft widerrufen.</p>
+          </div>
+          <div>
+            <strong>4. Kontaktformular</strong>
+            <p class="mt-2">Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
+          </div>
+          <div>
+            <strong>5. Hosting</strong>
+            <p class="mt-2">Diese Website wird auf GitHub Pages gehostet. Weitere Informationen zum Datenschutz bei GitHub finden Sie unter: <a href="https://docs.github.com/de/github/site-policy/github-privacy-statement" target="_blank" rel="noopener" class="text-brand-red hover:underline">GitHub Privacy Statement</a></p>
+          </div>
+        </div>
       </div>
       <div class="mt-6 text-xs text-slate-500">© <span id="year"></span> Kapersburg Apotheke</div>
     </div>
@@ -272,6 +424,91 @@
   <script>
     // Set current year
     document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Constants
+    const MESSAGE_TIMEOUT = 10000; // 10 seconds
+    
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const hamburger = document.querySelector('.hamburger');
+    
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', function() {
+        const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+        mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
+        mobileMenuBtn.setAttribute('aria-label', isExpanded ? 'Menü öffnen' : 'Menü schließen');
+        mobileMenu.classList.toggle('active');
+        hamburger.classList.toggle('active');
+      });
+      
+      // Close mobile menu when clicking on a link
+      const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+      mobileMenuLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          mobileMenu.classList.remove('active');
+          hamburger.classList.remove('active');
+          mobileMenuBtn.setAttribute('aria-expanded', 'false');
+          mobileMenuBtn.setAttribute('aria-label', 'Menü öffnen');
+        });
+      });
+    }
+    
+    // Form validation and submission
+    const prescriptionForm = document.getElementById('prescription-form');
+    const formMessage = document.getElementById('form-message');
+    
+    if (prescriptionForm && formMessage) {
+      prescriptionForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form data
+        const formData = new FormData(prescriptionForm);
+        const name = formData.get('name');
+        const phone = formData.get('phone');
+        const medication = formData.get('medication');
+        
+        // Validate
+        if (!name || !phone || !medication) {
+          showFormMessage('Bitte füllen Sie alle Pflichtfelder aus.', 'error');
+          return;
+        }
+        
+        // Phone validation - must contain at least one digit and match pattern
+        const phonePattern = /^[\+]?[0-9\s\(\)\-]{7,20}$/;
+        if (!phonePattern.test(phone) || !/\d/.test(phone)) {
+          showFormMessage('Bitte geben Sie eine gültige Telefonnummer ein.', 'error');
+          return;
+        }
+        
+        // Success message (since this is a placeholder)
+        showFormMessage('Vielen Dank für Ihre Anfrage! Da dies eine Demoversion ist, wurde keine E-Mail versandt. Bitte kontaktieren Sie uns direkt per Telefon: (06175) 636 oder E-Mail: kapersburg-apotheke@web.de', 'success');
+        
+        // Reset form
+        prescriptionForm.reset();
+      });
+    }
+    
+    function showFormMessage(message, type) {
+      formMessage.textContent = message;
+      formMessage.className = 'sm:col-span-2 p-3 rounded-md';
+      
+      if (type === 'error') {
+        formMessage.classList.add('bg-red-50', 'text-red-800', 'border', 'border-red-200');
+      } else {
+        formMessage.classList.add('bg-green-50', 'text-green-800', 'border', 'border-green-200');
+      }
+      
+      formMessage.classList.remove('hidden');
+      
+      // Scroll to message
+      formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      
+      // Hide after timeout
+      setTimeout(() => {
+        formMessage.classList.add('hidden');
+      }, MESSAGE_TIMEOUT);
+    }
   </script>
 </body>
 </html>
